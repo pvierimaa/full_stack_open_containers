@@ -1,0 +1,7 @@
+$ docker start -ai 43e0837febf9
+# apt update && apt install -y curl
+# curl -sL https://deb.nodesource.com/setup_20.x | bash
+# apt install -y nodejs
+# node -v
+# node /usr/src/app/index.js
+# exit

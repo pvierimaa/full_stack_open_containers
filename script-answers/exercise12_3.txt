@@ -1,0 +1,4 @@
+$ docker start -ai 43e0837febf9
+# apt update && apt install -y nano
+# nano /usr/src/app/index.js
+# exit
