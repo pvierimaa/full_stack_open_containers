@@ -1,0 +1,12 @@
+$ docker compose -f docker-compose.dev.yml up -d
+$ docker exec -it todo-backend-mongo-1 bash
+# mongosh -u root -p example
+use the_database
+show collections
+db.todos.find({})
+db.todos.insertOne({
+  text: "Increase the number of tools in my tool belt",
+  done: false
+})
+db.todos.find({})
+# exit

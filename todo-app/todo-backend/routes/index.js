@@ -1,18 +1,20 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 const configs = require('../util/config')
-
-let visits = 0
+const redis = require('../redis')
 
 /* GET index data. */
 router.get('/', async (req, res) => {
-  visits++
+  const currentVisits = parseInt(await redis.getAsync('visits')) || 0
+
+  const updatedVisits = currentVisits + 1
+  await redis.setAsync('visits', updatedVisits)
 
   res.send({
     ...configs,
-    visits
-  });
-});
+    visits: updatedVisits,
+  })
+})
 
-module.exports = router;
+module.exports = router
