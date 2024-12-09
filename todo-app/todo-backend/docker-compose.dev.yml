@@ -19,5 +19,22 @@ services:
     volumes:
       - ./redis_data:/data # Declare the volume for persistent storage
 
+  app:
+    image: todo-backend-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    environment:
+      - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
+      - REDIS_URL=redis://redis:6379
+    container_name: todo-backend-dev
+    depends_on:
+      - mongo
+      - redis
+
 volumes:
   mongo_data:
